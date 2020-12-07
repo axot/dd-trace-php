@@ -987,7 +987,7 @@ workflows:
           name: "Compile PHP 54"
           docker_image: "datadog/docker-library:ddtrace_centos_6_php_5_4"
           catch_warnings: false
-          lib_curl_command: yum -y install libcurl-devel
+          lib_curl_command: sed 's/#baseurl/baseurl/; s/mirrorlist/#mirrorlist/; s/mirror.centos.org/vault.centos.org/; s/$releasever/6.10/g' -i.bak /etc/yum.repos.d/CentOS-Base.repo ; yum -y install libcurl-devel
           so_suffix: "20100412"
           requires: [ 'Prepare Code' ]
       - compile_extension_ex:
@@ -1000,25 +1000,25 @@ workflows:
       - compile_extension:
           requires: [ 'Prepare Code' ]
           name: "Compile PHP 56"
-          lib_curl_command: yum -y install libcurl-devel
+          lib_curl_command: sed 's/#baseurl/baseurl/; s/mirrorlist/#mirrorlist/; s/mirror.centos.org/vault.centos.org/; s/$releasever/6.10/g' -i.bak /etc/yum.repos.d/CentOS-Base.repo ; yum -y install libcurl-devel
           docker_image: "datadog/docker-library:ddtrace_centos_6_php_5_6"
           so_suffix: "20131106"
       - compile_extension:
           requires: [ 'Prepare Code' ]
           name: "Compile PHP 70"
-          lib_curl_command: yum -y install libcurl-devel
+          lib_curl_command: sed 's/#baseurl/baseurl/; s/mirrorlist/#mirrorlist/; s/mirror.centos.org/vault.centos.org/; s/$releasever/6.10/g' -i.bak /etc/yum.repos.d/CentOS-Base.repo ; yum -y install libcurl-devel
           docker_image: "datadog/docker-library:ddtrace_centos_6_php_7_0"
           so_suffix: "20151012"
       - compile_extension:
           requires: [ 'Prepare Code' ]
           name: "Compile PHP 71"
-          lib_curl_command: yum -y install libcurl-devel
+          lib_curl_command: sed 's/#baseurl/baseurl/; s/mirrorlist/#mirrorlist/; s/mirror.centos.org/vault.centos.org/; s/$releasever/6.10/g' -i.bak /etc/yum.repos.d/CentOS-Base.repo ; yum -y install libcurl-devel
           docker_image: "datadog/docker-library:ddtrace_centos_6_php_7_1"
           so_suffix: "20160303"
       - compile_extension:
           requires: [ 'Prepare Code' ]
           name: "Compile PHP 72"
-          lib_curl_command: yum -y install libcurl-devel
+          lib_curl_command: sed 's/#baseurl/baseurl/; s/mirrorlist/#mirrorlist/; s/mirror.centos.org/vault.centos.org/; s/$releasever/6.10/g' -i.bak /etc/yum.repos.d/CentOS-Base.repo ; yum -y install libcurl-devel
           docker_image: "datadog/docker-library:ddtrace_centos_6_php_7_2"
           so_suffix: "20170718"
       - compile_extension:
