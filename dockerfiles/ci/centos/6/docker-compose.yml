@@ -1,10 +1,24 @@
 version: '3'
 
 services:
+  base:
+    image: 'datadog/dd-trace-ci:centos-6'
+    build:
+      context: .
+
   php-5.5:
     build:
       context: ./php-5.5
     image: 'datadog/dd-trace-ci:php-5.5_centos-6'
+
+  php-7.0:
+    build:
+      context: ./php-7.0
+      args:
+        phpVersion: 7.0
+        phpTarGzUrl: https://www.php.net/distributions/php-7.0.33.tar.gz
+        phpSha256Hash: d71a6ecb6b13dc53fed7532a7f8f949c4044806f067502f8fb6f9facbb40452a
+    image: 'datadog/dd-trace-ci:php-7.0_centos-6'
 
   php-8.0:
     build:

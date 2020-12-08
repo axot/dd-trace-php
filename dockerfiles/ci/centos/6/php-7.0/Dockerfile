@@ -15,8 +15,7 @@ RUN set -eux; \
     curl -fsSL -o /tmp/php.tar.gz "${phpTarGzUrl}"; \
     (echo "${phpSha256Hash} /tmp/php.tar.gz" | sha256sum -); \
     tar xf /tmp/php.tar.gz -C "${PHP_SRC_DIR}" --strip-components=1; \
-    rm -f /tmp/php.tar.gz; \
-    ${PHP_SRC_DIR}/buildconf --force;
+    rm -f /tmp/php.tar.gz;
 
 FROM base as build
 COPY configure.sh /root/
@@ -25,7 +24,7 @@ FROM build as php-zts
 RUN set -eux; \
     mkdir -p /tmp/build-php && cd /tmp/build-php; \
     /root/configure.sh \
-        --enable-zts \
+        --enable-maintainer-zts \
         --prefix=${PHP_INSTALL_DIR_ZTS} \
         --with-config-file-path=${PHP_INSTALL_DIR_ZTS} \
         --with-config-file-scan-dir=${PHP_INSTALL_DIR_ZTS}/conf.d; \
